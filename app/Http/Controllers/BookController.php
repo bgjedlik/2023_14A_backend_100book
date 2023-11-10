@@ -35,4 +35,11 @@ class BookController extends Controller
         }
         return response()->json($filteredBooks);
     }
+
+    function randomBooks($count){
+        $books = Book::orderByRaw('rand()')
+            ->limit($count)
+            ->get();
+        return response()->json($books);
+    }
 }
